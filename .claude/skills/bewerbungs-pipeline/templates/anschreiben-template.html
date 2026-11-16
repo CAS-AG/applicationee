@@ -1,0 +1,182 @@
+<title>{{NAME}} — Anschreiben {{ROLLE_KURZ}}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#F5F7F9;
+    --surface:#FFFFFF;
+    --text:#1B2430;
+    --text-muted:#55606F;
+    --text-faint:#7C8794;
+    --border:#DEE3E9;
+    --accent:#2C6178;
+    --accent-strong:#204A5D;
+    --accent-soft:#E7EFF2;
+    --rule:#C9D2DA;
+    --shadow: 0 1px 2px rgba(20,30,40,0.04), 0 8px 24px rgba(20,30,40,0.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#11151B; --surface:#161B22; --text:#E7ECF2; --text-muted:#9AA6B4;
+      --text-faint:#76808D; --border:#2A323C; --accent:#7FBBD7; --accent-strong:#A9D4E8;
+      --accent-soft:#1B2830; --rule:#2E3742;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#11151B; --surface:#161B22; --text:#E7ECF2; --text-muted:#9AA6B4;
+    --text-faint:#76808D; --border:#2A323C; --accent:#7FBBD7; --accent-strong:#A9D4E8;
+    --accent-soft:#1B2830; --rule:#2E3742;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+  }
+
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+    font-size:15px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{ max-width:720px; margin:0 auto; padding:56px 28px 96px; }
+  .sheet{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+    box-shadow:var(--shadow);
+    padding:52px 56px 60px;
+  }
+  .eyebrow{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:11.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .sender{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    padding-bottom:22px;
+    border-bottom:1px solid var(--border);
+    gap:24px;
+  }
+  .sender h1{
+    margin:0 0 4px;
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+  .sender .contact{
+    font-size:12.5px;
+    color:var(--text-muted);
+  }
+  .sender .date{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:12.5px;
+    color:var(--text-muted);
+    white-space:nowrap;
+    padding-top:4px;
+  }
+
+  .recipient{
+    margin-top:34px;
+    font-size:14px;
+    color:var(--text);
+  }
+  .recipient .line{ margin:0; }
+
+  .betreff{
+    margin-top:32px;
+    font-size:16px;
+    font-weight:700;
+    color:var(--text);
+  }
+
+  .body-text{
+    margin-top:22px;
+    font-size:14.5px;
+  }
+  .body-text p{ margin:0 0 11px; }
+  .body-text p:last-child{ margin-bottom:0; }
+
+  .closing{
+    margin-top:14px;
+    break-inside:avoid;
+  }
+  .closing .grussformel{ margin:0 0 20px; }
+  .closing .signature-name{
+    font-weight:600;
+  }
+
+  .print-btn{
+    position:fixed;
+    top:22px;
+    right:22px;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:12px;
+    letter-spacing:0.04em;
+    padding:9px 14px;
+    background:var(--surface);
+    color:var(--text);
+    border:1px solid var(--border);
+    border-radius:8px;
+    cursor:pointer;
+    box-shadow:var(--shadow);
+  }
+  .print-btn:hover{ border-color:var(--accent); color:var(--accent); }
+
+  @media (max-width: 640px){
+    .sheet{ padding:34px 24px 40px; }
+    .sender{ flex-direction:column; }
+  }
+
+  @page{ size: A4; margin: 2cm; }
+  @media print{
+    body{ background:#fff; font-size:12.5px; }
+    .page{ padding:0; max-width:none; }
+    .sheet{ box-shadow:none; border:none; border-radius:0; padding:0 6mm; }
+    .print-btn{ display:none; }
+  }
+</style>
+
+<button class="print-btn" onclick="window.print()">Als PDF drucken ↓</button>
+
+<div class="page">
+  <div class="sheet">
+
+    <div class="sender">
+      <div>
+        <div class="eyebrow">Anschreiben</div>
+        <h1>{{NAME}}</h1>
+        <div class="contact">{{EMAIL}}</div>
+      </div>
+      <div class="date">{{ORT_DATUM}}</div>
+    </div>
+
+    <div class="recipient">
+      <p class="line">{{FIRMA}}</p>
+      <p class="line">{{ANSPRECHPARTNER}}</p>
+      <p class="line">{{FIRMA_ADRESSE}}</p>
+    </div>
+
+    <div class="betreff">{{BETREFF}}</div>
+
+    <div class="body-text">
+      <p>{{ANREDE}}</p>
+      <p>{{ABSATZ_1}}</p>
+      <p>{{ABSATZ_2}}</p>
+      <p>{{ABSATZ_3}}</p>
+      <p>{{ABSATZ_4}}</p>
+    </div>
+
+    <div class="closing">
+      <p class="grussformel">Mit freundlichen Grüßen</p>
+      <p class="signature-name">{{NAME}}</p>
+    </div>
+
+  </div>
+</div>

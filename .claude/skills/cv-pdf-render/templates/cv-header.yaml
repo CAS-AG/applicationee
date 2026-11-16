@@ -1,0 +1,9 @@
+---
+lang: de-DE
+geometry: "a4paper,margin=2cm"
+fontsize: 10pt
+colorlinks: true
+pagestyle: empty
+header-includes:
+  - \setlength{\parskip}{4pt}
+---

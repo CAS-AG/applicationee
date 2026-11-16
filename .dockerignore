@@ -1,0 +1,14 @@
+# Das Dockerfile kopiert ohnehin nur gezielt package.json/package-lock.json und
+# .claude/skills/bewerbungs-pipeline/ -- diese Liste ist eine zusaetzliche
+# Absicherung gegen versehentliche COPY-. -Aenderungen in Zukunft.
+.git/
+node_modules/
+scratch/
+*.pdf
+Master-Profil.md
+CAS AG_Beraterprofil*.pdf
+.env
+.env.local
+.DS_Store
+# Generierte Job-Ordner ("<Firma> – <Jobtitel>/") duerfen nie ins Image
+*/_quellen/

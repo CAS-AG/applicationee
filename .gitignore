@@ -1,0 +1,17 @@
+node_modules/
+.DS_Store
+
+# Lokaler Scratch-Ordner fuer temporaere Dateien (z.B. PDF-Vorschau-PNGs) --
+# bewusst innerhalb des Projekts, damit Schreibzugriffe keine separate
+# Bestaetigung außerhalb des Arbeitsverzeichnisses erfordern.
+scratch/*
+
+# Vertraulich (CAS AG intern, keine Weitergabe an Dritte laut Dokument) —
+# Inhalt steckt bereits aufbereitet in Master-Profil.md
+*.pdf
+
+# Claude-Code-Zugangsdaten fuer den Container (CLAUDE_CODE_OAUTH_TOKEN /
+# ANTHROPIC_API_KEY) -- niemals committen, nur .env.local.example ist versioniert.
+.env
+.env.local
+archive/

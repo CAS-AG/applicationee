@@ -1,0 +1,10 @@
+{
+  "name": "bewerbungen-tooling",
+  "private": true,
+  "description": "Hilfsskripte fuer den Bewerbungs-Pipeline-Skill (Excel-Parsing, PDF-Rendering). Laufen direkt im Bewerbungs-Pipeline-Container (siehe Dockerfile).",
+  "type": "module",
+  "dependencies": {
+    "xlsx": "^0.18.5",
+    "puppeteer-core": "^24.0.0"
+  }
+}

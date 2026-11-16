@@ -1,0 +1,17 @@
+services:
+  # Headless-Chromium-Container zum Rendern von HTML (CV, Anschreiben) zu PDF
+  # und zum Ausführen der Node-Hilfsskripte (u.a. Excel-Parsing).
+  #
+  # Einmalig vor erster Nutzung (installiert node_modules/xlsx im Bind-Mount):
+  #   docker compose run --rm pdf-render npm install
+  #
+  # PDF rendern:
+  #   docker compose run --rm pdf-render node scripts/render-pdf.mjs <input.html> <output.pdf>
+  #
+  # Excel einlesen:
+  #   docker compose run --rm pdf-render node scripts/parse-excel.mjs <Jobliste.xlsx>
+  pdf-render:
+    image: ghcr.io/puppeteer/puppeteer:latest
+    working_dir: /work
+    volumes:
+      - .:/work
